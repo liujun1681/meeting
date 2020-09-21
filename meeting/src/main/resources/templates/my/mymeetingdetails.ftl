@@ -159,25 +159,25 @@
                         <table class="formtable">
                             <tr>
                                 <td>会议名称：</td>
-                                <td>市场部总结会议</td>
+                                <td>${meeting.meetingname!}</td>
                             </tr>
                             <tr>
                                 <td>预计参加人数：</td>
-                                <td>15</td>
+                                <td>${meeting.numberofparticipants!}</td>
                             </tr>
                             <tr>
                                 <td>预计开始时间：</td>
-                                <td>2013-10-21 14:50</td>
+                                <td>${meeting.starttime?string('yyyy-MM-dd HH:mm:ss')!}</td>
                             </tr>
                             <tr>
                                 <td>预计结束时间：</td>
-                                <td>2013-10-21 18:50
+                                <td>${meeting.endtime?string('yyyy-MM-dd HH:mm:ss')!}
                                 </td>
                             </tr>
                             <tr>
                                 <td>会议说明：</td>
                                 <td>
-                                    <textarea id="description" rows="5" readonly>本会议将邀请专家参加。</textarea>
+                                    <textarea id="description" rows="5" readonly>${meeting.description!}</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -189,42 +189,21 @@
                                             <th>联系电话</th>
                                             <td>电子邮件</td>
                                         </tr>
+                                        <#list employeeList as employees>
                                         <tr>
-                                            <td>Jerry</td>
-                                            <td>13800138000</td>
-                                            <td>jerry@chinasofti.com</td>
+                                            <td>${employees.employeename!}</td>
+                                            <td>${employees.phone!}</td>
+                                            <td>${employees.email!}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Jerry</td>
-                                            <td>13800138000</td>
-                                            <td>jerry@chinasofti.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jerry</td>
-                                            <td>13800138000</td>
-                                            <td>jerry@chinasofti.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jerry</td>
-                                            <td>13800138000</td>
-                                            <td>jerry@chinasofti.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jerry</td>
-                                            <td>13800138000</td>
-                                            <td>jerry@chinasofti.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jerry</td>
-                                            <td>13800138000</td>
-                                            <td>jerry@chinasofti.com</td>
-                                        </tr>
+                                        </#list>
                                     </table>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="command" colspan="2">
-                                    <input type="button" class="clickbutton" value="撤销会议" onclick="window.location.href='cancelmeeting.html';"/>
+                                    <#if employee.employeeid == meeting.reservationistid>
+                                        <input type="button" class="clickbutton" value="撤销会议" onclick="window.location.href='/employee/cancelmeeting?meetingId=${meeting.meetingid}';"/>
+                                    </#if>
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>

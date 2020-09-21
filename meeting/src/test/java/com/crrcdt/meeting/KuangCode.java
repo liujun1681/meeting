@@ -48,7 +48,7 @@ public class KuangCode {
 
         //策略
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("counter","department","employee","meeting","meetingparticipants","meetingroom");
+        strategy.setInclude("role");
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);//自动生成lombok

@@ -30,8 +30,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="command">
-                            <input type="submit" value="登录" class="clickbutton"
-                                   onclick="window.location.href='notifiactions.html';"/>
+                            <input type="submit" value="登录" class="clickbutton" />
                             <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
                         </td>
                     </tr>

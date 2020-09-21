@@ -13,7 +13,10 @@
         <div class="content-nav">
             人员管理 > 部门管理
         </div>
-        <form action="/admin/adddepartment">
+        <#if msg??>
+            <strong style="color: red">${msg!''}</strong>
+        </#if>
+        <form action="/peopleManager/addDepartments">
             <fieldset>
                 <legend>添加部门</legend>
                 部门名称:
@@ -38,7 +41,7 @@
                                onclick="editDep(${dep.departmentid})">编辑</a>
                             <a class="clickbutton" style="display: none" href="#" id="cancel${dep.departmentid}"
                                onclick="cancelDep(${dep.departmentid})">取消</a>
-                            <a class="clickbutton" href="/admin/deletedep?departmentid=${dep.departmentid}">删除</a>
+                            <a class="clickbutton" href="/peopleManager/deleteDepartments?departmentid=${dep.departmentid}">删除</a>
                         </td>
                     </tr>
                 </#list>
@@ -75,7 +78,8 @@
         }else{
             var children = ele.children('input');
             var val = children.val();
-            $.post('/admin/updatedep',{id:depid,name:val},function (msg) {
+            $.post('/peopleManager/updateDepartments',{id:depid,name:val},function (msg) {
+                alert(msg)
                 if (msg == 'success') {
                     cancelBtn.css('display', 'none');
                     editBtn.html('编辑');

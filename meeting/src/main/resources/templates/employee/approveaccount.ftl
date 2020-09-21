@@ -15,6 +15,9 @@
         <div class="content-nav">
             人员管理 > 注册审批
         </div>
+        <#if msg??>
+            <strong style="color: red">${msg!''}</strong>
+        </#if>
         <table class="listtable">
             <caption>所有待审批注册信息：</caption>
             <tr class="listheader">
@@ -32,8 +35,8 @@
                         <td>${emp.phone}</td>
                         <td>${emp.email}</td>
                         <td>
-                            <a type="button" class="clickbutton" href="/admin/updatestatus?employeeid=${emp.employeeid}&status=1">通过</a>
-                            <a type="button" class="clickbutton" href="/admin/updatestatus?employeeid=${emp.employeeid}&status=2">不通过</a>
+                            <a type="button" class="clickbutton" href="/peopleManager/updatestatus?employeeid=${emp.employeeid}&status='1">通过</a>
+                            <a type="button" class="clickbutton" href="/peopleManager/updatestatus?employeeid=${emp.employeeid}&status='2">不通过</a>
                         </td>
                     </tr>
                 </#list>

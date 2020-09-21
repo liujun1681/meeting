@@ -47,7 +47,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginPage("/toLogin") //自己的登入页
                 .loginProcessingUrl("/login") // 登陆表单提交请求
-                .defaultSuccessUrl("/notifications"); // 设置默认登录成功后跳转的页面
+                .defaultSuccessUrl("/employee/newNoticeMeetings"); // 设置默认登录成功后跳转的页面
 
         // 注销配置
         http.headers().contentTypeOptions().disable();

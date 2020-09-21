@@ -153,25 +153,24 @@
                 <div class="content-nav">
                     会议预定 > 撤销会议预定
                 </div>
-                <form>
+                <form action="/employee/cancel?meetingId=${meeting.meetingid}" method="post">
                     <fieldset>
                         <legend>撤销预定</legend>
                         <table class="formtable">
+                            <#if msg??>
+                                <strong style="color: red">${msg!''}</strong>
+                            </#if>
                             <tr>
                                 <td>会议名称：</td>
-                                <td>市场部总结会议</td>
+                                <td>${meeting.meetingname!}</td>
                             </tr>
                             <tr>
                                 <td>撤销理由：</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>预计开始时间：</td>
-                                <td> <textarea id="description" rows="5">市场人员出差</textarea></td>
+                                <td> <textarea id="description" rows="5" name="canceledreason"></textarea></td>
                             </tr>
                             <tr>
                                 <td class="command" colspan="2">
-                                    <input type="button" class="clickbutton" value="确认撤销"/>
+                                    <input type="submit" class="clickbutton" value="确认撤销"/>
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>

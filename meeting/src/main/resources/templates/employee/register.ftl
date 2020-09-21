@@ -8,18 +8,21 @@
     </style>
 </head>
 <body>
-<#include 'top.ftl'>
+<#include '../common/top.ftl'>
 <div class="page-body">
-    <#include 'leftMenu.ftl'>
+    <#include '../common/leftMenu.ftl'>
     <div class="page-content">
         <div class="content-nav">
             人员管理 > 员工注册
         </div>
-        <form action="/doReg" method="post">
+        <form action="/peopleManager/doReg" method="post" contentType="application/json">
             <fieldset>
                 <legend>员工信息</legend>
                 <div style="color: #ff0114">${error!''}</div>
                 <table class="formtable" style="width:50%">
+                    <#if msg??>
+                        <strong style="color: red">${msg!''}</strong>
+                    </#if>
                     <tr>
                         <td>姓名：</td>
                         <td>
@@ -57,12 +60,25 @@
                             <input name="email" type="text" value="<#if employee??>${employee.email}</#if>" id="email" maxlength="20"/>
                         </td>
                     </tr>
+                    <tr>
                     <td>所在部门：</td>
                     <td>
                         <select name="departmentid">
                             <#if deps??>
                                 <#list deps as dep>
                                     <option value="${dep.departmentid}">${dep.departmentname}</option>
+                                </#list>
+                            </#if>
+                        </select>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>选择角色：</td>
+                    <td>
+                        <select name="role">
+                            <#if deps??>
+                                <#list roles as role>
+                                    <option value="${role.id}">${role.roleName}</option>
                                 </#list>
                             </#if>
                         </select>

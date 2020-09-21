@@ -34,7 +34,7 @@
                         <td>${meeting.reservationtime?string('yyyy-MM-dd HH:mm:ss')}</td>
                         <td>${meeting.reservationistName}</td>
                         <td>
-                            <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
+                            <a class="clickbutton" href="/employee/viewMeetins?meetingId=${meeting.meetingid}">查看/撤销</a>
                         </td>
                     </tr>
                     </#list>
