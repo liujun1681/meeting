@@ -50,9 +50,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
 
             //创建一个集合来存放权限
             Collection<GrantedAuthority> authorities = getAuthorities(employee);
+            Boolean enabled=employee.getStatus().equals("1");
             //实例化UserDetails对象
             userDetails = new org.springframework.security.core.userdetails.User(s, BCryptPassword,
-                    true,
+                    enabled,
                     true,
                     true,
                     true, authorities);

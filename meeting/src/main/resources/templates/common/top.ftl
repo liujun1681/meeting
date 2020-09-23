@@ -11,6 +11,6 @@
             <strong>${employee.employeename!''}</strong>
         </#if>
         <a href="/changepassword">[修改密码]</a>
-        <a href="/loginOut">[注销]</a>
+        <a href="/logout">[注销]</a>
     </div>
 </div>

@@ -22,19 +22,16 @@ public class LoginController {
         return "/common/login";
     }
 
-    @RequestMapping({"/","/index"})
-    public String toIndex(){
-        return "/ftl/login";
-    }
-
     @RequestMapping({"/changepassword"})
     public String toChangePassword(HttpSession httpSession, HttpServletRequest request){
         currentUser.setLoginUserMap(httpSession,request);
         return "/common/changepassword";
     }
-    @RequestMapping("/loginOut")
-    public String loginOut(HttpSession httpSession, HttpServletRequest request){
-        return "/common/login";
-    }
+//    @RequestMapping("/loginOut")
+//    public String loginOut(HttpSession httpSession, HttpServletRequest request){
+//        httpSession.removeAttribute("loginUser");
+//
+//        return "/common/login";
+//    }
 
 }

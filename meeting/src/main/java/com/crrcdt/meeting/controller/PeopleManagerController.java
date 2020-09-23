@@ -61,7 +61,7 @@ public class PeopleManagerController {
         currentUser.setLoginUserMap(httpSession,request);
         final boolean res = employeeService.save(employee);
         if(res){
-            map.put("msg","添加成员成功！");
+            map.put("msg","添加成员成功！等待管理源审批");
         }
        else {
             map.put("msg","添加成员失败！");
@@ -182,7 +182,14 @@ public class PeopleManagerController {
                                              @RequestParam("employeename") String employeename,
                                              @RequestParam("username") String username,
                                              @RequestParam("status") String status,
-                                          Map<String, Object> map){
+                                             Map<String, Object> map,HttpSession session){
+        //判断seesion中有信息？
+
+        final String msg = (String) session.getAttribute("msg");
+        if(msg!=null){
+            map.put("msg","关闭账号成功!!!");
+            session.removeAttribute("msg");
+        }
         final ConditionVo conditionVo = new ConditionVo();
         conditionVo.setEmployeename(employeename);
         conditionVo.setStatus(status);
@@ -197,5 +204,22 @@ public class PeopleManagerController {
         map.put("totalPage", (employeeIPage.getTotal() % size)== 0 ? (employeeIPage.getTotal() / size) : (employeeIPage.getTotal() / size)+1 );
         return new ModelAndView("/employee/searchemployees",map);
     }
+
+    @RequestMapping("/updateemp")
+    public String updateemp(@RequestParam("username")String username,
+                            @RequestParam("employeename")String employeename,
+                            @RequestParam("id") Integer empId,HttpSession session){
+        final Employee employee = new Employee();
+        employee.setEmployeeid(empId);
+        employee.setStatus(UserStatus.CHECK_PASS_FAIL);
+        final boolean res = employeeService.updateById(employee);
+        if(res){
+            session.setAttribute("msg","关闭账号成功！");
+        }
+        else {
+            session.setAttribute("msg","关闭账号失败！");
+        }
+        return "redirect:/peopleManager/searchempByCondition?status=1&username="+username+"&employeename="+employeename;
+}
 }
 

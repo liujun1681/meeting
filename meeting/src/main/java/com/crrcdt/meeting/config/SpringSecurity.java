@@ -37,8 +37,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         // .permitAll();    //无条件允许访问
         // 访问权限
         http.authorizeRequests()
-                .antMatchers("/toLogin","/register","/static/**").permitAll()
-                .antMatchers("/*").authenticated()
+                .antMatchers("/toLogin","/peopleManager/register","/peopleManager/doReg","/static/**").permitAll()
+                .antMatchers("/**").authenticated()
                 .antMatchers("/admin/**","/album/**","/tag/**").hasRole("admin");
 
         // 登录配置
@@ -53,7 +53,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         http.headers().contentTypeOptions().disable();
         http.headers().frameOptions().disable(); // 图片跨域
         http.csrf().disable();//关闭csrf功能:跨站请求伪造,默认只能通过post方式提交logout请求
-        http.logout().logoutSuccessUrl("/login");
+        http.logout().logoutSuccessUrl("/toLogin");
 
         // 记住我配置
         http.rememberMe().rememberMeParameter("remember");

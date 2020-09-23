@@ -18,6 +18,9 @@
         <form action="/peopleManager/searchempByCondition" method="get">
             <fieldset>
                 <legend>搜索会议</legend>
+                <#if msg??>
+                    <strong style="color: red">${msg!''}</strong>
+                </#if>
                 <table class="formtable">
                     <tr>
                         <td>姓名：</td>
@@ -107,7 +110,7 @@
                         <td>${emp.phone}</td>
                         <td>${emp.email}</td>
                         <td>
-                            <a class="clickbutton" href="/admin/updateemp?id=${emp.employeeid}">关闭账号</a>
+                            <a class="clickbutton" href="/peopleManager/updateemp?id=${emp.employeeid}&username=${condition.username!}&employeename=${condition.employeename!}">关闭账号</a>
                         </td>
                     </tr>
                 </#list>

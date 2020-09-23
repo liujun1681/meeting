@@ -79,7 +79,7 @@ public class MeetingController {
     }
     @RequestMapping("/viewMeetingroom")
     public ModelAndView viewMeetingroom(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                        @RequestParam(value = "size", defaultValue = "5") Integer size,
+                                        @RequestParam(value = "size", defaultValue = "3") Integer size,
             HttpSession session, HttpServletRequest request, HashMap<String,Object> map){
         final Page<Meetingroom> meetingroomPage = new Page<>(page,size);
         final IPage<Meetingroom> meetingroomIPage = meetingroomService.page(meetingroomPage, null);

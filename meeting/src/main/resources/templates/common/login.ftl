@@ -32,6 +32,7 @@
                         <td colspan="2" class="command">
                             <input type="submit" value="登录" class="clickbutton" />
                             <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
+                            <a href="/peopleManager/register">没有账户？去注册</a>
                         </td>
                     </tr>
                 </table>

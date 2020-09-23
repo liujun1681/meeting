@@ -35,8 +35,8 @@
                         <td>${emp.phone}</td>
                         <td>${emp.email}</td>
                         <td>
-                            <a type="button" class="clickbutton" href="/peopleManager/updatestatus?employeeid=${emp.employeeid}&status='1">通过</a>
-                            <a type="button" class="clickbutton" href="/peopleManager/updatestatus?employeeid=${emp.employeeid}&status='2">不通过</a>
+                            <a type="button" class="clickbutton" href="/peopleManager/updatestatus?employeeid=${emp.employeeid}&status='1'">通过</a>
+                            <a type="button" class="clickbutton" href="/peopleManager/updatestatus?employeeid=${emp.employeeid}&status='2'">不通过</a>
                         </td>
                     </tr>
                 </#list>
