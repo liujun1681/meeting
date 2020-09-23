@@ -74,7 +74,9 @@
             selEmployees = document.getElementById("selEmployees");
             selSelectedEmployees = document.getElementById("selSelectedEmployees");
 
-            $.get("/alldeps", function (data) {
+            $.get("/meeting/alldeps", function (data) {
+                // alert(data)
+                console.log("data",data)
                 for (let i = 0; i < data.length; i++) {
                     var item = data[i];
                     var dep = document.createElement("option");
@@ -90,7 +92,9 @@
         function fillEmployees() {
             clearList(selEmployees);
             var departmentid = selDepartments.options[selDepartments.selectedIndex].value;
-            $.get("/getempbydepid?depId="+departmentid,function (data) {
+            $.get("/meeting/getempbydepid?depId="+departmentid,function (data) {
+                // alert(data)
+                console.log("data2",data)
                 for (i = 0; i < data.length; i++) {
                     var emp = document.createElement("option");
                     emp.value = data[i].employeeid;
@@ -162,9 +166,12 @@
         <div class="content-nav">
             会议预定 > 预定会议
         </div>
-        <form action="/doAddMeeting" method="post">
+        <form action="/meeting/doAddMeeting" method="post">
             <fieldset>
                 <legend>会议信息</legend>
+                <#if msg??>
+                    <strong style="color: red">${msg!''}</strong>
+                </#if>
                 <table class="formtable">
                     <tr>
                         <td>会议名称：</td>
@@ -227,7 +234,7 @@
                     </tr>
                     <tr>
                         <td class="command" colspan="2">
-                            <input type="submit" class="clickbutton" value="预定会议"/>
+                            <input type="submit" class="clickbutton" value="预定会议" />
                             <input type="reset" class="clickbutton" value="重置"/>
                         </td>
                     </tr>

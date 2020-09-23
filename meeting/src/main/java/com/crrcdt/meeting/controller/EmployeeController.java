@@ -99,7 +99,7 @@ public class EmployeeController {
         map.put("meetings",meetingIPage);
         map.put("currentPage", page);
         map.put("size", size);
-        map.put("totalPage", (meetingIPage.getTotal() / size)+1 );
+        map.put("totalPage",(meetingIPage.getTotal() % size)== 0 ? (meetingIPage.getTotal() / size) : (meetingIPage.getTotal() / size)+1 );
         return new ModelAndView( "/my/mybookings",map);
     }
 
@@ -131,7 +131,7 @@ public class EmployeeController {
         map.put("meetings",meetingIPage);
         map.put("currentPage", page);
         map.put("size", size);
-        map.put("totalPage", (meetingIPage.getTotal() / size)+1 );
+        map.put("totalPage", (meetingIPage.getTotal() % size)== 0 ? (meetingIPage.getTotal() / size) : (meetingIPage.getTotal() / size)+1);
         return new ModelAndView( "/my/mymeetings",map);
     }
 

@@ -22,11 +22,11 @@
         <div class="sidebar-grouptitle">会议预定</div>
         <ul class="sidebar-menu">
             <#if employee?? && (employee.role=="2")>
-                <li class="sidebar-menuitem"><a href="/admin/addmeetingroom">添加会议室</a></li>
+                <li class="sidebar-menuitem"><a href="/meeting/addmeetingroom">添加会议室</a></li>
             </#if>
-            <li class="sidebar-menuitem"><a href="meetingrooms">查看会议室</a></li>
-            <li class="sidebar-menuitem"><a href="bookmeeting">预定会议</a></li>
-            <li class="sidebar-menuitem"><a href="searchmeetings">搜索会议</a></li>
+            <li class="sidebar-menuitem"><a href="/meeting/viewMeetingroom">查看会议室</a></li>
+            <li class="sidebar-menuitem"><a href="/meeting/bookmeeting">预定会议</a></li>
+            <li class="sidebar-menuitem"><a href="/meeting/searchmeetings">搜索会议</a></li>
         </ul>
     </div>
 </div>

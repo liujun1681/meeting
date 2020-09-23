@@ -169,11 +169,11 @@ public class PeopleManagerController {
         final ConditionVo conditionVo = new ConditionVo("", "", "1");
         map.put("condition",conditionVo);
         final Page<Employee> employeePage = new Page<>(page,size);
-        final IPage<Employee> employeeIPage = employeeService.page(employeePage, null);
+        final IPage<Employee> employeeIPage = employeeService.page(employeePage, new QueryWrapper<Employee>().eq("status","1"));
         map.put("emps",employeeIPage.getRecords());
         map.put("currentPage", page);
         map.put("size", size);
-        map.put("totalPage", (employeeIPage.getTotal() / size)+1 );
+        map.put("totalPage", (employeeIPage.getTotal() % size)== 0 ? (employeeIPage.getTotal() / size) : (employeeIPage.getTotal() / size)+1  );
         return new ModelAndView("/employee/searchemployees",map);
     }
     @RequestMapping("/searchempByCondition")
@@ -194,7 +194,7 @@ public class PeopleManagerController {
         map.put("emps",employeeIPage.getRecords());
         map.put("currentPage", page);
         map.put("size", size);
-        map.put("totalPage", (employeeIPage.getTotal() / size)+1 );
+        map.put("totalPage", (employeeIPage.getTotal() % size)== 0 ? (employeeIPage.getTotal() / size) : (employeeIPage.getTotal() / size)+1 );
         return new ModelAndView("/employee/searchemployees",map);
     }
 }

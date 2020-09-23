@@ -12,9 +12,12 @@
                 <div class="content-nav">
                     会议预定 > 添加会议室
                 </div>
-                <form action="/admin/doAddMr" method="post">
+                <form action="/meeting/doAddMr" method="post">
                     <fieldset>
                         <legend>会议室信息</legend>
+                        <#if msg??>
+                            <strong style="color: red">${msg!''}</strong>
+                        </#if>
                         <table class="formtable">
                             <tr>
                                 <td>门牌号:</td>

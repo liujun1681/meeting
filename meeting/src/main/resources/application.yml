@@ -30,3 +30,5 @@ management:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:com/crrcdt/meeting/mapper/xml/*.xml
+  type-aliases-package: com.crrcdt.meeting.entity

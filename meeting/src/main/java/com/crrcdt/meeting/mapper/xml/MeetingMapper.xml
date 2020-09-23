@@ -2,4 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crrcdt.meeting.mapper.MeetingMapper">
 
+    <select id="getPageMeetings" parameterType="com.crrcdt.meeting.entity.MeetingConditionVo" resultType="com.crrcdt.meeting.entity.Meeting">
+        SELECT
+            m.*,
+            e.employeename,
+            mg.roomname
+        FROM
+            meeting m,
+            employee e,
+            meetingroom mg
+        <where>
+            <if test="1==1">
+                m.reservationistid = e.employeeid
+            </if>
+            <if test="1==1">
+                and m.roomid = mg.roomid
+            </if>
+            <if test="meetingConditionVo.meetingname!=''">
+               and m.meetingname like concat('%',#{meetingConditionVo.meetingname},'%')
+            </if>
+            <if test="meetingConditionVo.roomname!=''">
+                and mg.roomname like concat('%',#{meetingConditionVo.roomname},'%')
+            </if>
+            <if test="meetingConditionVo.reservername!=''">
+                and  e.employeename like concat('%',#{meetingConditionVo.reservername},'%')
+            </if>
+            <if test="meetingConditionVo.meetingfromdate!=''">
+                and m.starttime &gt; #{meetingConditionVo.meetingfromdate}
+            </if>
+            <if test="meetingConditionVo.meetingtodate!=''">
+                and m.starttime &lt; #{meetingConditionVo.meetingtodate}
+            </if>
+
+        </where>
+    </select>
 </mapper>

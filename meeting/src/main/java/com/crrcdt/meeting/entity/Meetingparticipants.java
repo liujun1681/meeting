@@ -32,5 +32,11 @@ public class Meetingparticipants implements Serializable {
 
     private Integer employeeid;
 
+    public Meetingparticipants(Integer meetingid, Integer employeeid) {
+        this.meetingid = meetingid;
+        this.employeeid = employeeid;
+    }
 
+    public Meetingparticipants() {
+    }
 }

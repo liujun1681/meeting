@@ -27,11 +27,11 @@
                     </tr>
                     <#list meetings.records as meeting>
                     <tr>
-                        <td>${meeting.meetingname}</td>
-                        <td>${meeting.roomName}</td>
-                        <td>${meeting.starttime?string('yyyy-MM-dd HH:mm:ss')}</td>
-                        <td>${meeting.endtime?string('yyyy-MM-dd HH:mm:ss')}</td>
-                        <td>${meeting.reservationtime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>${meeting.meetingname!}</td>
+                        <td>${meeting.roomName!}</td>
+                        <td>${meeting.starttime?string('yyyy-MM-dd HH:mm:ss')!}</td>
+                        <td>${meeting.endtime?string('yyyy-MM-dd HH:mm:ss')!}</td>
+                        <td>${meeting.reservationtime?string('yyyy-MM-dd HH:mm:ss')!}</td>
                         <td>
                             <a class="clickbutton" href="/employee/viewMeetins?meetingId=${meeting.meetingid}">查看/撤销</a>
                         </td>
@@ -64,6 +64,7 @@
             </#if>
         </ul>
     </div>
+    <div>【当前页】：${currentPage}</div>
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>

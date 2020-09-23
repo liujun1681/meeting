@@ -27,15 +27,40 @@
                         <td>${mr.roomnum}</td>
                         <td>${mr.roomname}</td>
                         <td>${mr.capacity}</td>
-                        <td>${(mr.status==0)?string('启用','已占用')}</td>
+                        <td>${(mr.status=='0')?string('启用','已占用')}</td>
                         <td>
-                            <a class="clickbutton" href="/roomdetails?roomid=${mr.roomid}">查看详情</a>
+                            <a class="clickbutton" href="/meeting/roomdetails?roomid=${mr.roomid}">查看详情</a>
                         </td>
                     </tr>
                 </#list>
             </#if>
         </table>
     </div>
+</div>
+<#--    分页-->
+<div class="col-md-12 column">
+    <ul class="pagination pull-right">
+        <#if currentPage lte 1>
+            <li class="disabled" style="float: left;list-style: none"><a href="#">上一页</a></li>
+        <#else>
+            <li style="float: left;list-style: none"><a href="/meeting/viewMeetingroom?page=${currentPage - 1}&size=${size}">上一页</a></li>
+        </#if>
+
+        <#list 1..totalPage as index>
+            <#if currentPage == index>
+                <li class="disabled" style="float: left;list-style: none"><a href="#">${index}</a></li>
+            <#else>
+                <li style="float: left;list-style: none"><a href="/meeting/viewMeetingroom?page=${index}&size=${size}">${index}</a></li>
+            </#if>
+        </#list>
+
+        <#if currentPage gte totalPage>
+            <li class="disabled" style="float: left;list-style: none"><a href="#">下一页</a></li>
+        <#else>
+            <li style="float: left;list-style: none"><a href="/meeting/viewMeetingroom?page=${currentPage + 1}&size=${size}">下一页</a></li>
+        </#if>
+    </ul>
+    <div>【当前页】：${currentPage}</div>
 </div>
 <div class="page-footer">
     <hr/>
